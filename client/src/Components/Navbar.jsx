@@ -2,6 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+
+  const handleLogout=()=>{
+    localStorage.removeItem("token")
+    window.location.reload()
+  }
   return (
     <nav className="bg-black p-6">
       <div className="container mx-auto">
@@ -94,6 +99,15 @@ const NavBar = () => {
               >
                 Resume
               </NavLink>
+              </li>
+              <li>
+              <button
+               onClick={handleLogout}
+                className="text-white hover:text-gray-300 border border-rose-200 px-2 bg-red-600 rounded-lg"
+                activeClassName="text-blue-500"
+              >
+                Logout
+              </button>
               </li>
           </ul>
         </div>

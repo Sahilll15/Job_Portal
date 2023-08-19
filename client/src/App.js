@@ -15,6 +15,8 @@ import SignUpasAProvider from './pages/SignUpasAProvider';
 import Footer from './Components/Footer';
 import BlogPage from './pages/BlogPage';
 import InterviewPrepPage from './pages/InterviewPrepPage';
+import ProtectRoutes from './utils/ProtectRoutes';
+import { toast, ToastContainer } from 'react-toastify'
 const App = () => {
   const [resumeData, setResumeData] = useState(null);
 
@@ -26,25 +28,26 @@ const App = () => {
     <div>
       <Router>
         <NavBar />
+        <ToastContainer />
         <Routes>
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/signupasseeker" element={<SignUp />} />
-          <Route path="/signupasaprovider" element={<SignUpasAProvider />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/companies" element={<Companies />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="/dashboard" element={<DashBoard />} />
-          <Route path="/interviewprep" element={<InterviewPrepPage />} />
-          <Route path="/resume" element={resumeData ? <ResumeViewer data={resumeData} /> : <ResumeBuilder onFormSubmit={handleFormSubmit} />} />
+          <Route element={<ProtectRoutes />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/companies" element={<Companies />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/interviewprep" element={<InterviewPrepPage />} />
+            <Route path="/resume" element={<ResumeBuilder onSubmit={handleFormSubmit} />} />
+          </Route>
+          <Route path='/signupasseeker' element={<SignUp />} />
+          <Route path='/signupasaprovider' element={<SignUpasAProvider />} />
 
         </Routes>
         <Footer />
       </Router>
-    </div>
+    </div >
   );
 };
 

@@ -15,10 +15,7 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Here you can perform any actions you need with the email and password
-    // For example, sending a request to a server for authentication
-    console.log('Email:', email);
-    console.log('Password:', password);
+    
   };
 
   return (
