@@ -16,7 +16,9 @@ import Footer from './Components/Footer';
 import BlogPage from './pages/BlogPage';
 import InterviewPrepPage from './pages/InterviewPrepPage';
 import ProtectRoutes from './utils/ProtectRoutes';
+
 import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const [resumeData, setResumeData] = useState(null);
 
@@ -43,6 +45,7 @@ const App = () => {
           </Route>
           <Route path='/signupasseeker' element={<SignUp />} />
           <Route path='/signupasaprovider' element={<SignUpasAProvider />} />
+          <Route path='/login' element={<LoginForm />} />
 
         </Routes>
         <Footer />

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../Context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {login}=useAuth();
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -13,9 +17,21 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
-    
+
+    await login(email,password).then(
+      (res)=>{
+        console.log(res)
+        navigate('/')
+      }
+    ).catch(
+      (err)=>{
+        console.log(err)
+      }
+
+    )
+
   };
 
   return (
