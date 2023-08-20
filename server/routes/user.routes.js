@@ -5,6 +5,6 @@ const { getAlluser } = require('../utils/Email')
 
 router.post('/register', upload, register)
 router.post('/login', login)
-router.get('/alluser', getAlluser)
+
 
 module.exports = router;
