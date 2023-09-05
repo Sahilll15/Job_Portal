@@ -28,7 +28,7 @@ db.myDb();
 app.listen(Port, () => {
     console.log(`Server is running on the port ${Port}`);
 }
-);
+)
 
 
 cron.schedule('22 12 * * *', () => {
