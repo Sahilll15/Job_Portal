@@ -114,8 +114,25 @@ const login = async (req, res) => {
     }
 };
 
+
+const getLoggedIn = async (req, res) => {
+    try {
+        const user = req.user;
+        console.log(user)
+        const existingUser = await User.findById(user);
+        if (!existingUser) {
+            return res.status(400).json({ msg: "User does not exist" })
+        }
+        return res.status(200).json({ msg: "User logged in successfully", user: existingUser })
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ msg: error.message });
+    }
+}
+
 module.exports = {
     register,
     login,
-    upload
+    upload,
+    getLoggedIn
 };
