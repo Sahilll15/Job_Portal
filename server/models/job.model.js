@@ -1,21 +1,46 @@
 const mongoose = require('mongoose')
 
 const JobSchema = mongoose.Schema({
-    name: {
+    jobTitle: {
         type: String,
         required: true
     },
-    desc: {
+    jobDescription: {
         type: String,
         required: true
     },
-    logo: {
+    jobLocation: {
         type: String,
+        required: true
     },
-    candidate: {
-        type: Number
+    jobType: {
+        type: String,
+        required: true
+    },
+    jobCategory: {
+        type: String,
+        required: true
+    },
+    jobSalary: {
+        type: String,
+        required: true
+    },
+    jobExperience: {
+        type: String,
+        required: true
+    },
+    jobQualification: {
+        type: String,
+        required: true
+    },
+    jobSkills: {
+        type: String,
+        required: true
     }
-})
+}
+)
+
+module.exports = mongoose.model('Job', JobSchema)
 
 
 

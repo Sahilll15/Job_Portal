@@ -3,11 +3,14 @@ require('dotenv').config();
 const db = require('./db');
 const userRoutes = require('./routes/user.routes')
 const quizRoutes = require('./routes/quiz.routes')
+const jobRoutes = require('./routes/job.routes')
+const contatRoutes = require('./routes/contact.routes')
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { scheduleNotifications } = require('./utils/Email')
 const cron = require('node-cron');
 const app = express();
+
 
 const Port = process.env.PORT || 4000;
 
@@ -39,5 +42,6 @@ cron.schedule('22 12 * * *', () => {
 
 app.use('/api/v1/user', userRoutes)
 app.use('/api/v1/quiz', quizRoutes)
-
+app.use('/api/v1/job', jobRoutes)
+app.use('/api/v1/contact', contatRoutes)
 
